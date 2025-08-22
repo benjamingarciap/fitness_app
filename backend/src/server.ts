@@ -4,6 +4,7 @@ import cors from 'cors'
 import authRoutes from './routes/auth.js'
 import postsRoutes from './routes/posts.js'
 import profileRoutes from './routes/profile.js'
+import 'dotenv/config'
 
 const app = express()
 
@@ -19,9 +20,10 @@ app.use('/api/posts', postsRoutes)
 app.use('/api/profile', profileRoutes)
 
 const PORT = process.env.PORT
+console.log(PORT)
 
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(process.env.MONGODB_URI || '')
   .then(() => {
     console.log('Connected to MongoDB')
     app.listen(PORT, () => {

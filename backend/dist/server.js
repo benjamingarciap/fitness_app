@@ -4,6 +4,7 @@ import cors from 'cors';
 import authRoutes from './routes/auth.js';
 import postsRoutes from './routes/posts.js';
 import profileRoutes from './routes/profile.js';
+import 'dotenv/config';
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -13,10 +14,10 @@ app.get('/', (_req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postsRoutes);
 app.use('/api/profile', profileRoutes);
-const PORT = process.env.PORT || 5050;
+const PORT = process.env.PORT;
+console.log(PORT);
 mongoose
-    .connect(process.env.MONGODB_URI ||
-    'mongodb+srv://bengarc:zf65gsPsShQMIW9N@cluster0.lrxvc4c.mongodb.net/fitness-app?retryWrites=true&w=majority&appName=Cluster0')
+    .connect(process.env.MONGODB_URI || '')
     .then(() => {
     console.log('Connected to MongoDB');
     app.listen(PORT, () => {

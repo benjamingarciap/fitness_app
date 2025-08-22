@@ -7,7 +7,7 @@ const PostSchema = new Schema({
     reactions: {
         flex: { type: Number, default: 0 },
         fire: { type: Number, default: 0 },
-        clap: { type: Number, default: 0 }
-    }
+        clap: { type: Number, default: 0 },
+    },
 }, { timestamps: true });
 export default model('Post', PostSchema);
